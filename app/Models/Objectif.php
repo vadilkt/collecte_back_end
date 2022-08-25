@@ -24,6 +24,6 @@ class Objectif extends Model
         return $this->hasMany(moyen::class);
     }
     public function taux_achevements(){
-        return $this->hasMany(taux_achevement::class);
+        return $this->hasOne(taux_achevement::class);
     }
 }
