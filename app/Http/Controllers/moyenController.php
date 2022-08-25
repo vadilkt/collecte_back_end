@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class assignationController extends Controller
+class moyenController extends Controller
 {
     /**
      * Display a listing of the resource.
