@@ -28,6 +28,6 @@ class CreateObjectifsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objectifs');
+        Schema::dropIfExists('objectif');
     }
 }

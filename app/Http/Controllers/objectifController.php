@@ -14,7 +14,8 @@ class objectifController extends Controller
      */
     public function index()
     {
-        return response()->json(Objectif::all());
+        $objectif = Objectif::latest()->paginate(10);
+        return response()->json($objectif);
     }
 
     /**
