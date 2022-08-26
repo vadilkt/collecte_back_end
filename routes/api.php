@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\assignationController;
+use App\Http\Controllers\indicateurController;
+use App\Http\Controllers\moyenController;
 use App\Http\Controllers\ObjectifController;
+use App\Http\Controllers\tauxController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -11,17 +14,16 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| routes are loaded by the RouteServiceProvider within a group which 
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::post('/admin/actions/objectifs/creer-objectif', [ObjectifController::class, 'creer_objectif'])->name('objectif.create');
-Route::get('/admin/actions/objectifs/', [ObjectifController::class, 'liste_objectif'])->name('objectif.liste');
-Route::post('/admin/actions/objectifs/modifier-objectif/{id}', [ObjectifController::class, 'update_objectif'])->name('objectif.update');
-Route::post('/admin/actions/objectifs/assigner-objectif/{id}', [assignationController::class, 'assigner_objectif'])->name('assignation.create');
+Route::apiResource('objectif', ObjectifController::class);  //creer, lire, mettre à jour, supprimer, afficher..
+Route::apiResource('assignation', assignationController::class);
+Route::apiResource('indicateurU', indicateurController::class);
+Route::apiResource('moyen', moyenController::class);
+Route::apiResource('taux', tauxController::class);
+
 

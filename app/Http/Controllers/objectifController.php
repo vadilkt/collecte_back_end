@@ -24,7 +24,7 @@ class objectifController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -35,7 +35,13 @@ class objectifController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item=Objectif::create([
+            'intitule_obj'=>$request->intitule_obj,
+            'intitule_eval'=>$request->intitule_eval
+        ]);
+
+        return response()->json($item);
+        
     }
 
     /**
@@ -46,7 +52,9 @@ class objectifController extends Controller
      */
     public function show($id)
     {
-        //
+        $objectif=Objectif::findorFail($id);
+
+        return response()->json($objectif);
     }
 
     /**
@@ -55,10 +63,10 @@ class objectifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    /* public function edit($id)
     {
         //
-    }
+    } */
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +77,13 @@ class objectifController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $amodifier=Objectif::find($id);
+        $amodifier->Objectif::update([
+            'intitule_obj'=>$request->intitule_obj,
+            'intitule_eval'=>$request->intitule_eval
+        ]);
+
+        return response()->json($amodifier);
     }
 
     /**
@@ -80,6 +94,7 @@ class objectifController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $adetruire=Objectif::find($id);
+        $adetruire->delete();
     }
 }

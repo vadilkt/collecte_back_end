@@ -17,7 +17,6 @@ class CreateObjectifsTable extends Migration
             $table->id();
             $table->string('intitule_obj',255);
             $table->string('intitule_eval');
-            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
