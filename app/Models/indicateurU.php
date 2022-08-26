@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class indicateurU extends Model
 {
     use HasFactory;
+    protected $table='indicateur_u_s';
     protected $fillable=[
         'intitule_score', 'valeur_score'
     ];

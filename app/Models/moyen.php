@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class moyen extends Model
 {
     use HasFactory;
+    protected $table='moyen';
     protected $fillable=[
         'intitule_moyen'
     ];

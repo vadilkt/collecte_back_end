@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class taux_achevement extends Model
 {
     use HasFactory;
+    protected $table='taux_achevements';
     protected $fillable=[
         'taux_achevement'
     ];

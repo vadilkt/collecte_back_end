@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class assignation_objectif extends Model
 {
     use HasFactory;
+    protected $table='assignation_objectif';
     protected $fillable=['date_deb','date_fin','valeur_eval'];
 
     public function objectif(){
-        return $this->belongsTo(Objectifs::class);
+        return $this->belongsTo(Objectif::class);
     }
 
 }

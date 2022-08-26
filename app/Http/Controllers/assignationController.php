@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\assignation_objectif;
 use Illuminate\Http\Request;
 
 class assignationController extends Controller
@@ -13,7 +14,7 @@ class assignationController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(assignation_objectif::All());
     }
 
     /**

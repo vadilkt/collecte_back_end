@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Objectif extends Model
 {
     use HasFactory;
-
+    protected $table='objectif';
     protected $fillable = [
         'intitule_obj','intitule_eval'
     ];
