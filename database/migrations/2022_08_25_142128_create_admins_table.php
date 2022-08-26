@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndicateurUSTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateIndicateurUSTable extends Migration
      */
     public function up()
     {
-        Schema::create('indicateur_u_s', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('intitule_score');
-            $table->integer('valeur_score');
-            $table->foreignId('objectif_id')->constrained('objectif');
-            $table->foreignId('user_id')->constrained();
+            $table->string('username');
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateIndicateurUSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicateur_u_s');
+        Schema::dropIfExists('admins');
     }
 }

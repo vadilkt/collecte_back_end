@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Objectif;
+use App\Models\indicateurU;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,11 +19,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'noms', 'prenoms', 'poste','superieur','agence','directioin',
-        'departement','classification','role','email','password'
+        'noms', 'prenoms', 'poste','superieur','agence','direction',
+        'departement','classification','email','password'
     ];
     public function objectifs(){
-        return $this->hasMany(Objectif::class);
+        return $this->hasManyThrough(Objectif::class, indicateurU::class);
     }
 
     /**
