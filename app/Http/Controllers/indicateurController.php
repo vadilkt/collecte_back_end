@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\indicateurU;
 use Illuminate\Http\Request;
 
 class indicateurController extends Controller
@@ -13,7 +14,8 @@ class indicateurController extends Controller
      */
     public function index()
     {
-        //
+        $item=indicateurU::All();
+        return response()->json($item);
     }
 
     /**
@@ -34,7 +36,11 @@ class indicateurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $indicateur=indicateurU::create([
+            'intitule_score'=>$request->intitule_score,
+            'valeur_score'=>$request->valeur_score
+        ]);
+        return response()->json($indicateur);
     }
 
     /**
@@ -45,7 +51,8 @@ class indicateurController extends Controller
      */
     public function show($id)
     {
-        //
+        $indicateur=indicateurU::findorFail($id);
+        return response()->json($indicateur);
     }
 
     /**
@@ -68,7 +75,13 @@ class indicateurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $amodifier=indicateurU::find($id);
+        $amodifier->update([
+            'intitule_score'=>$request->intitule_score,
+            'valeur_score'=>$request->valeur_score
+        ]);
+
+        return response()->json($amodifier);
     }
 
     /**
@@ -79,6 +92,7 @@ class indicateurController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item=indicateurU::find($id);
+        $item->delet();
     }
 }

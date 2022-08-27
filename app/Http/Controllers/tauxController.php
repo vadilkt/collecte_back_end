@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\taux_achevement;
 use Illuminate\Http\Request;
 
 class tauxController extends Controller
@@ -34,7 +35,12 @@ class tauxController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $taux=taux_achevement::create([
+            'taux_achevement'=>$request->taux_achevement,
+            'objectif_id'=> $request->objectif_id,
+        ]);
+
+        return response()->json($taux);
     }
 
     /**

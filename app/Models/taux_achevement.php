@@ -10,10 +10,15 @@ class taux_achevement extends Model
 {
     use HasFactory;
     protected $table='taux_achevements';
-    protected $fillable=[
-        'taux_achevement'
-    ];
+    protected $guarded=['id'];
     public function objectif(){
         return $this->belongsTo(Objectif::class);
+    }
+    public function indicateur(){
+        return $this->belongsTo(indicateurU::class);
+    }
+
+    public function assignation(){
+        return $this->belongsTo(assignation_objectif::class);
     }
 }

@@ -9,9 +9,7 @@ class moyen extends Model
 {
     use HasFactory;
     protected $table='moyen';
-    protected $fillable=[
-        'intitule_moyen'
-    ];
+    protected $guarded=['id'];
     public function objectif(){
         return $this->belongsTo(Objectif::class);
     }

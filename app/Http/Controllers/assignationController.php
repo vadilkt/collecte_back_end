@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class assignationController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +34,17 @@ class assignationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
     public function store(Request $request)
     {
-        //
+        $assignation=assignation_objectif::create([
+            'date_deb'=>$request->date_deb,
+            'date_fin'=>$request->date_fin,
+            'valeur_eval'=>$request->valeur_eval,
+            'objectif_id'=> $this->objectif()->id,
+        ]);
+
+        return response()->json($assignation);
     }
 
     /**
@@ -46,7 +55,8 @@ class assignationController extends Controller
      */
     public function show($id)
     {
-        //
+        $assignation=assignation_objectif::findorFail($id);
+        return response()->json($assignation);
     }
 
     /**
@@ -69,7 +79,14 @@ class assignationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $amodifier=assignation_objectif::find($id);
+        $amodifier->update([
+            'date_deb'=>$request->date_deb,
+            'date_fin'=>$request->date_fin,
+            'valeur_eval'=>$request->valeur_eval
+        ]);
+
+        return response()->json($amodifier);
     }
 
     /**
@@ -80,6 +97,7 @@ class assignationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $asupprimer=assignation_objectif::find($id);
+        $asupprimer->delete();
     }
 }

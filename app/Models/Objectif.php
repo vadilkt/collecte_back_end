@@ -13,9 +13,7 @@ class Objectif extends Model
 {
     use HasFactory;
     protected $table='objectif';
-    protected $fillable = [
-        'intitule_obj','intitule_eval'
-    ];
+    protected $guarded=['id'];
 
     public function assignation_objectifs(){
         return $this->hasMany(assignation_objectif::class);

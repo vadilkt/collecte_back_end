@@ -79,7 +79,7 @@ class objectifController extends Controller
     public function update(Request $request, $id)
     {
         $amodifier=Objectif::find($id);
-        $amodifier->Objectif::update([
+        $amodifier->update([
             'intitule_obj'=>$request->intitule_obj,
             'intitule_eval'=>$request->intitule_eval
         ]);

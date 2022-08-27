@@ -13,10 +13,14 @@ class CreateTauxAchevementsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('taux_achevements', function (Blueprint $table) {
             $table->id();
             $table->double('taux_achevement');
             $table->foreignId('objectif_id')->constrained('objectif');
+            $table->foreignId('indicateurU_id')->constrained('indicateur_u_s');
+            $table->foreignId('assignation_objectif_id')->constrained('assignation_objectif');
+            
             $table->timestamps();
         });
     }

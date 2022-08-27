@@ -19,10 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $table='users';
-    protected $fillable = [
-        'noms', 'prenoms', 'poste','superieur','agence','direction',
-        'departement','classification','email','password'
-    ];
+    protected $guarded=['id'];
     public function objectifs(){
         return $this->hasManyThrough(Objectif::class, indicateurU::class);
     }
