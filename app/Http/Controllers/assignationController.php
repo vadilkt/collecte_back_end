@@ -41,7 +41,7 @@ class assignationController extends Controller
             'date_deb'=>$request->date_deb,
             'date_fin'=>$request->date_fin,
             'valeur_eval'=>$request->valeur_eval,
-            'objectif_id'=> $this->objectif()->id,
+            'objectif_id'=> $request->objectif_id,
         ]);
 
         return response()->json($assignation);

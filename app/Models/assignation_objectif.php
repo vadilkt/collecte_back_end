@@ -16,8 +16,5 @@ class assignation_objectif extends Model
     {
         return $this->belongsTo(Objectif::class);
     }
-    public function taux()
-    {
-        return $this->hasOne(taux_achevement::class);
-    }
+    
 }

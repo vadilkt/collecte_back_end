@@ -78,7 +78,9 @@ class indicateurController extends Controller
         $amodifier=indicateurU::find($id);
         $amodifier->update([
             'intitule_score'=>$request->intitule_score,
-            'valeur_score'=>$request->valeur_score
+            'valeur_score'=>$request->valeur_score,
+            'objectif_id'=> $request->objectif_id,
+            'user_id'=>$request->user_id
         ]);
 
         return response()->json($amodifier);

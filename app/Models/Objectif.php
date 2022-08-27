@@ -22,9 +22,7 @@ class Objectif extends Model
     public function moyens(){
         return $this->hasMany(moyen::class);
     }
-    public function taux_achevements(){
-        return $this->hasOne(taux_achevement::class);
-    }
+   
     public function indicateurUs(){
         return $this->hasOne(indicateurU::class);
     }
