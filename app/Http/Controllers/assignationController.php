@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\assignation_objectif;
+use App\Models\Objectif;
 use Illuminate\Http\Request;
 
 class assignationController extends Controller
@@ -41,7 +42,7 @@ class assignationController extends Controller
             'date_deb'=>$request->date_deb,
             'date_fin'=>$request->date_fin,
             'valeur_eval'=>$request->valeur_eval,
-            'objectif_id'=> $request->objectif_id,
+            'objectif_id'=>$request->objectif_id,
         ]);
 
         return response()->json($assignation);

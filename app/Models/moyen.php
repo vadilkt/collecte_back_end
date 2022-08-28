@@ -11,6 +11,6 @@ class moyen extends Model
     protected $table='moyen';
     protected $guarded=['id'];
     public function objectif(){
-        return $this->belongsTo(Objectif::class);
+        return $this->belongsTo(indicateurU::class, 'indicateur_u_s_id');
     }
 }

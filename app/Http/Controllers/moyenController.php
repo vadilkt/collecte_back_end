@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\moyen;
 use Illuminate\Http\Request;
 
 class moyenController extends Controller
@@ -13,7 +14,7 @@ class moyenController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(moyen::All());
     }
 
     /**
@@ -34,7 +35,11 @@ class moyenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $moyen=moyen::create([
+            'intitule_moyen'=>$request->intitule_moyen,
+            'objectif_id'=>$request->objectif_id
+        ]);
+        return response()->json($moyen);
     }
 
     /**
@@ -45,7 +50,8 @@ class moyenController extends Controller
      */
     public function show($id)
     {
-        //
+        $moyen=moyen::findorFail($id);
+        return response()->json($moyen);
     }
 
     /**
@@ -68,7 +74,11 @@ class moyenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $moyen=moyen::find($id);
+        $moyen->update([
+            'intitule_moyen'=>$request->intitule_moyen
+        ]);
+        return response()->json($moyen);
     }
 
     /**
@@ -79,6 +89,8 @@ class moyenController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $moyen=moyen::find($id);
+        $moyen->delete();
+        return response()->json($moyen);
     }
 }

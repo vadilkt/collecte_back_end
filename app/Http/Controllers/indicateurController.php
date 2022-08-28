@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Objectif;
 use App\Models\indicateurU;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class indicateurController extends Controller
      */
     public function index()
     {
-        $item=indicateurU::All();
+        $item = indicateurU::All();
         return response()->json($item);
     }
 
@@ -34,13 +35,21 @@ class indicateurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Objectif $objectif)
     {
-        $indicateur=indicateurU::create([
-            'intitule_score'=>$request->intitule_score,
-            'valeur_score'=>$request->valeur_score
+        /* $indic = indicateurU::create([
+            'intitule_score' => $request->intitule_score,
+            'valeur_score' => $request->valeur_score,
+            'user_id' => auth()->id(),
+            'objectif_id' => $request->objectif_id
+        ]); */
+
+        $indic=$objectif->indicateurUs()->create([
+            'intitule_score' => $request->intitule_score,
+            'valeur_score' => $request->valeur_score,
+            'user_id' => auth()->id()
         ]);
-        return response()->json($indicateur);
+        return response()->json($indic);
     }
 
     /**
@@ -51,7 +60,7 @@ class indicateurController extends Controller
      */
     public function show($id)
     {
-        $indicateur=indicateurU::findorFail($id);
+        $indicateur = indicateurU::findorFail($id);
         return response()->json($indicateur);
     }
 
@@ -75,12 +84,10 @@ class indicateurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $amodifier=indicateurU::find($id);
+        $amodifier = indicateurU::find($id);
         $amodifier->update([
-            'intitule_score'=>$request->intitule_score,
-            'valeur_score'=>$request->valeur_score,
-            'objectif_id'=> $request->objectif_id,
-            'user_id'=>$request->user_id
+            'intitule_score' => $request->intitule_score,
+            'valeur_score' => $request->valeur_score
         ]);
 
         return response()->json($amodifier);
@@ -94,7 +101,7 @@ class indicateurController extends Controller
      */
     public function destroy($id)
     {
-        $item=indicateurU::find($id);
-        $item->delet();
+        $item = indicateurU::find($id);
+        $item->delete();
     }
 }

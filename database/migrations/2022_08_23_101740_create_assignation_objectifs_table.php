@@ -18,7 +18,7 @@ class CreateAssignationObjectifsTable extends Migration
             $table->date('date_deb');
             $table->date('date_fin');
             $table->integer('valeur_eval');
-            $table->foreignId('objectif_id')->constrained('objectif');
+            $table->foreignId('objectif_id')->constrained('objectif')->nullable();
             $table->timestamps();
         });
     }

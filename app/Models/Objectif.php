@@ -13,18 +13,18 @@ class Objectif extends Model
 {
     use HasFactory;
     protected $table='objectif';
-    protected $guarded=['id'];
+    protected $guarded=[];
 
     public function assignation_objectifs(){
-        return $this->hasMany(assignation_objectif::class);
+        return $this->hasMany(assignation_objectif::class, 'objectif_id');
     }
 
     public function moyens(){
-        return $this->hasMany(moyen::class);
+        return $this->hasMany(moyen::class, 'objectif_id');
     }
    
     public function indicateurUs(){
-        return $this->hasOne(indicateurU::class);
+        return $this->hasOne(indicateurU::class, 'objectif_id');
     }
 
 }

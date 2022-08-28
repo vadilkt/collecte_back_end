@@ -24,6 +24,5 @@ Route::apiResource('objectif', ObjectifController::class);  //creer, lire, mettr
 Route::apiResource('assignation', assignationController::class);
 Route::apiResource('indicateurU', indicateurController::class);
 Route::apiResource('moyen', moyenController::class);
-Route::apiResource('taux', tauxController::class);
 
 

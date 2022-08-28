@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $table='users';
     protected $guarded=['id'];
     public function objectifs(){
-        return $this->hasManyThrough(Objectif::class, indicateurU::class);
+        return $this->hasManyThrough(Objectif::class, indicateurU::class, 'user_id');
     }
 
     /**

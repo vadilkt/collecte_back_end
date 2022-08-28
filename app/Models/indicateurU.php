@@ -13,11 +13,14 @@ class indicateurU extends Model
     protected $guarded = ['id'];
     public function objectif()
     {
-        return $this->belongsTo(Objectif::class);
+        return $this->belongsTo(Objectif::class, 'objectif_id');
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function moyens(){
+        return $this->hasMany(moyen::class, 'indicateur_u_s_id');
     }
 
 }

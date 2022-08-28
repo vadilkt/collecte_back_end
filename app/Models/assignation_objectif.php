@@ -14,7 +14,7 @@ class assignation_objectif extends Model
 
     public function objectif()
     {
-        return $this->belongsTo(Objectif::class);
+        return $this->belongsTo(Objectif::class, 'objectif_id');
     }
     
 }
