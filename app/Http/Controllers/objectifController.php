@@ -25,7 +25,7 @@ class objectifController extends Controller
      */
     public function create()
     {
-      
+      //
     }
 
     /**
@@ -51,11 +51,10 @@ class objectifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $objectif=Objectif::findorFail($id);
-
-        return response()->json($objectif);
+        $objectif=Objectif::where('intitule_obj',$request->keywords)->get();
+      return response()->json($objectif);
     }
 
     /**
@@ -97,5 +96,6 @@ class objectifController extends Controller
     {
         $adetruire=Objectif::find($id);
         $adetruire->delete();
+        return response()->json($adetruire);
     }
 }

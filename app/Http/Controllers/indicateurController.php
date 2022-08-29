@@ -26,7 +26,7 @@ class indicateurController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -35,20 +35,14 @@ class indicateurController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Objectif $objectif)
+    public function store(Request $request)
     {
-        /* $indic = indicateurU::create([
+        $indic = indicateurU::create([
             'intitule_score' => $request->intitule_score,
             'valeur_score' => $request->valeur_score,
             'user_id' => auth()->id(),
             'objectif_id' => $request->objectif_id
-        ]); */
-
-        $indic=$objectif->indicateurUs()->create([
-            'intitule_score' => $request->intitule_score,
-            'valeur_score' => $request->valeur_score,
-            'user_id' => auth()->id()
-        ]);
+        ]); 
         return response()->json($indic);
     }
 
@@ -58,10 +52,10 @@ class indicateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $indicateur = indicateurU::findorFail($id);
-        return response()->json($indicateur);
+        $objectif=Objectif::where('intitule_obj',$request->keywords)->get();
+      return response()->json($objectif);
     }
 
     /**
