@@ -16,7 +16,7 @@ class CreateMoyensTable extends Migration
         Schema::create('moyen', function (Blueprint $table) {
             $table->id();
             $table->string('intitule_moyen');
-            $table->foreignId('indicateurU_id')->constrained('indicateur_u_s');
+            $table->foreignId('indicateurU_id')->constrained('indicateur_u_s')->nullable();
             $table->timestamps();
         });
     }

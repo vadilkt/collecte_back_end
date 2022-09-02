@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('direction')->nullable();
             $table->string('departement');
             $table->string('classification');
+            $table->softDeletes();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

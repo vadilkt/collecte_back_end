@@ -17,8 +17,8 @@ class CreateIndicateurUSTable extends Migration
             $table->id();
             $table->string('intitule_score');
             $table->integer('valeur_score');
-            $table->foreignId('objectif_id')->constrained('objectif');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('objectif_id')->constrained('objectif')->nullable();
+            $table->foreignId('user_id')->constrained()->nullable();
             $table->timestamps();
         });
     }

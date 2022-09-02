@@ -18,10 +18,6 @@ class Objectif extends Model
     public function assignation_objectifs(){
         return $this->hasMany(assignation_objectif::class, 'objectif_id');
     }
-
-    public function moyens(){
-        return $this->hasMany(moyen::class, 'objectif_id');
-    }
    
     public function indicateurUs(){
         return $this->hasOne(indicateurU::class, 'objectif_id');

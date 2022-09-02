@@ -52,10 +52,15 @@ class indicateurController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function search(Request $request)
     {
         $objectif=Objectif::where('intitule_obj',$request->keywords)->get();
       return response()->json($objectif);
+    }
+
+    public function show($id){
+        $indicateur=indicateurU::find($id);
+        return response()->json($indicateur);
     }
 
     /**
