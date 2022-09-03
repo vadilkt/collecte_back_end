@@ -57,9 +57,9 @@ class LoginController extends Controller
             return response()->json(['errors'=>$validator->errors()->all()]);
         }
 
-        if(auth()->guard('user')->attempt(['username'=> request('username'), 'password'=> request('password')])){
+        if(auth()->guard('admin')->attempt(['username'=> request('username'), 'password'=> request('password')])){
             config(['auth.guards.api.provider'=>'admin']);
-            $admin = User::select('admins.*')->find(auth()->guard('admin')->user()->id);
+            $admin = Admin::select('admins.*')->find(auth()->guard('admin')->user()->id);
             $success = $admin;
             $success['token']= $admin->createToken('MyApp', ['admin'])->accessToken;
             return response()-> json($success, 200);
