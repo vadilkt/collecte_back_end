@@ -56,8 +56,8 @@ class ObjectifSeeder extends Seeder
                 Score::create([
                     "user_id" => $user->id,
                     "assignation_id" => $assignation->id,
-                    "valeur" => Arr::random([40,50,70,80,90,100]),
-                    "moyens" => "Téléphone, Internet"
+                    "valeur_score" => Arr::random([40,50,70,80,90,100]),
+                    "moyens" => json_encode(["Téléphone", "Internet"])
                 ]);
             }
 
