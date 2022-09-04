@@ -16,5 +16,10 @@ class assignation_objectif extends Model
     {
         return $this->belongsTo(Objectif::class, 'objectif_id');
     }
+
+    public function scores()
+    {
+        return $this->hasMany(Score::class, 'assignation_id');
+    }
     
 }

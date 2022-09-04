@@ -24,6 +24,10 @@ class User extends Authenticatable
         return $this->hasManyThrough(Objectif::class, indicateurU::class, 'user_id');
     }
 
+    public function scores(){
+        return $this->hasMany(Score::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

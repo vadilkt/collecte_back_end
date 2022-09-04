@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('noms');
             $table->string('prenoms');
             $table->string('poste');
+            $table->string('anciennete');
             $table->string('superieur');
             $table->string('agence');
             $table->string('direction')->nullable();

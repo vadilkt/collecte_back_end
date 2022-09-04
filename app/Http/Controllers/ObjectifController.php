@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Objectif;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class objectifController extends Controller
 {
@@ -36,7 +37,23 @@ class objectifController extends Controller
      */
     public function store(Request $request)
     {
-        $item=Objectif::create([
+        // Validation 
+        // Les messages personnalises en francais sont dans le fichier /lang/fr/validation dans le champ custom
+        $validator = Validator::make($request->all(), [
+            "intitule_obj" => "required",
+            "intitule_eval" => "required",
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(
+                [
+                    "errors" => $validator->errors()->getMessages(),
+                ],
+                422
+            );
+        }
+
+        $item = Objectif::create([
             'intitule_obj'=>$request->intitule_obj,
             'intitule_eval'=>$request->intitule_eval
         ]);
@@ -51,10 +68,10 @@ class objectifController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request,$id)
     {
-        $objectif=Objectif::where('intitule_obj',$request->keywords)->get();
-      return response()->json($objectif);
+        $objectif=Objectif::find($id);
+        return response()->json($objectif);
     }
 
     /**
